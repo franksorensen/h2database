@@ -104,7 +104,7 @@ See <a href="tutorial.html#creating_new_databases">Creating New Databases</a>.
 
 <h3 id="connect">How to Connect to a Database?</h3>
 <p>
-The database driver is <code>org.h2.Driver</code>,
+The database driver is <code>org.h2v1.Driver</code>,
 and the database URL starts with <code>jdbc:h2:</code>.
 To connect to a database using JDBC, use the following code:
 </p>
@@ -241,7 +241,7 @@ and not the alias name. If you need the alias name, use
 <a href="https://docs.oracle.com/javase/7/docs/api/java/sql/ResultSetMetaData.html#getColumnLabel(int)"><code>ResultSetMetaData.getColumnLabel()</code></a>.
 Some other database don't work like this yet (they don't follow the JDBC specification).
 If you need compatibility with those databases, use the <a href="features.html#compatibility">Compatibility Mode</a>,
-or append <a href="https://h2database.com/javadoc/org/h2/engine/DbSettings.html#ALIAS_COLUMN_NAME"><code>;ALIAS_COLUMN_NAME=TRUE</code></a> to the database URL.
+or append <a href="https://h2database.com/javadoc/org/h2v1/engine/DbSettings.html#ALIAS_COLUMN_NAME"><code>;ALIAS_COLUMN_NAME=TRUE</code></a> to the database URL.
 </p>
 <p>
 This also applies to DatabaseMetaData calls that return a result set.

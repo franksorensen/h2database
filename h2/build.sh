@@ -22,5 +22,5 @@ fi
 if [ "$1" = "clean" ] ; then rm -rf temp bin ; fi
 if [ ! -d "temp" ] ; then mkdir temp ; fi
 if [ ! -d "bin" ] ; then mkdir bin ; fi
-"$JAVA_HOME/bin/javac" -sourcepath src/tools -d bin src/tools/org/h2/build/*.java
-"$JAVA_HOME/bin/java" -Xmx1g -cp "bin:$JAVA_HOME/lib/tools.jar:temp" org.h2.build.Build $@
+"$JAVA_HOME/bin/javac" -sourcepath src/tools -d bin src/tools/org/h2v1/build/*.java
+"$JAVA_HOME/bin/java" -Xmx1g -cp "bin:$JAVA_HOME/lib/tools.jar:temp" org.h2v1.build.Build $@

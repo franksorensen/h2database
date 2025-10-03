@@ -193,8 +193,8 @@ To create an Eclipse project for H2, use the following steps:
 The translation of this software is split into the following parts:
 </p>
 <ul>
-<li>H2 Console: <code>src/main/org/h2/server/web/res/_text_*.prop</code>
-</li><li>Error messages: <code>src/main/org/h2/res/_messages_*.prop</code>
+<li>H2 Console: <code>src/main/org/h2v1/server/web/res/_text_*.prop</code>
+</li><li>Error messages: <code>src/main/org/h2v1/res/_messages_*.prop</code>
 </li></ul>
 <p>
 To translate the H2 Console, start it and select Preferences / Translate.
@@ -215,8 +215,8 @@ If you'd like to contribute bug fixes or new features, please consider the follo
     you need to copy them to the <code>.settings</code> directory.
     The formatting options (<code>eclipseCodeStyle</code>) are also included.
 </li><li>Please provide test cases and integrate them into the test suite.
-    For Java level tests, see <code>src/test/org/h2/test/TestAll.java</code>.
-    For SQL level tests, see SQL files in <code>src/test/org/h2/test/scripts</code>.
+    For Java level tests, see <code>src/test/org/h2v1/test/TestAll.java</code>.
+    For SQL level tests, see SQL files in <code>src/test/org/h2v1/test/scripts</code>.
 </li><li>The test cases should cover at least 90% of the changed and new code;
     use a code coverage tool to verify that (see above).
     or use the build target <code>coverage</code>.
@@ -226,7 +226,7 @@ If you'd like to contribute bug fixes or new features, please consider the follo
 </li><li>Document grammar changes in <code>src/docsrc/help/help.csv</code>
 </li><li>Provide a change log entry (<code>src/docsrc/html/changelog.html</code>).
 </li><li>Verify the spelling using <code>build spellcheck</code>. If required
-    add the new words to <code>src/tools/org/h2/build/doc/dictionary.txt</code>.
+    add the new words to <code>src/tools/org/h2v1/build/doc/dictionary.txt</code>.
 </li><li>Run <code>src/installer/buildRelease</code> to find and fix formatting errors.
 </li><li>Verify the formatting using <code>build docs</code> and
     <code>build javadoc</code>.
@@ -269,7 +269,7 @@ or if  you have a feature request:
     Please keep test cases as simple and short as possible,
     but so that the problem can still be reproduced.
     As a template, use:
-    <a href="https://github.com/h2database/h2database/tree/master/h2/src/test/org/h2/samples/HelloWorld.java">HelloWorld.java</a>.
+    <a href="https://github.com/h2database/h2database/tree/master/h2/src/test/org/h2v1/samples/HelloWorld.java">HelloWorld.java</a>.
     Method that simply call other methods should be avoided,
     as well as unnecessary exception handling.
     Please use the JDBC API and no external tools or libraries.
@@ -307,12 +307,12 @@ The results are available on <a href="https://travis-ci.org/h2database/h2databas
 The railroad diagrams of the <a href="grammar.html">SQL grammar</a> are HTML, formatted as nested tables.
 The diagrams are generated as follows:
 </p>
-<ul><li>The BNF parser (<code>org.h2.bnf.Bnf</code>) reads and parses the BNF from the file <code>help.csv</code>.
-</li><li>The page parser (<code>org.h2.server.web.PageParser</code>) reads the template HTML file and fills in the diagrams.
+<ul><li>The BNF parser (<code>org.h2v1.bnf.Bnf</code>) reads and parses the BNF from the file <code>help.csv</code>.
+</li><li>The page parser (<code>org.h2v1.server.web.PageParser</code>) reads the template HTML file and fills in the diagrams.
 </li><li>The rail images (one straight, four junctions, two turns) are generated using a simple Java application.
 </li></ul>
 <p>
-To generate railroad diagrams for other grammars, see the package <code>org.h2.jcr</code>.
+To generate railroad diagrams for other grammars, see the package <code>org.h2v1.jcr</code>.
 This package is used to generate the SQL-2 railroad diagrams for the JCR 2.0 specification.
 </p>
 

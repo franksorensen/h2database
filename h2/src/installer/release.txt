@@ -32,7 +32,7 @@ If this fails with eg. "Expected file size 400 - 600 KB, got: 1687", then
 find out where the dependency is, and resolve. As follows:
 start by renaming Database to Database2:
 
-    mv src/main/org/h2/engine/Database.java src/main/org/h2/engine/Database2.java
+    mv src/main/org/h2v1/engine/Database.java src/main/org/h2v1/engine/Database2.java
     ./build.sh clean jarClient
 
 This will fail, the first error is for example can not compile Session because Database was not found.
@@ -52,7 +52,7 @@ The file size should be about 300 KB:
 
 ## Changing Version Numbers
 
-Update org.h2.engine.Constants.java:
+Update org.h2v1.engine.Constants.java:
     if the last build was stable (the normal case):
         set BUILD_DATE_STABLE to current BUILD_DATE
         set BUILD_ID_STABLE to current BUILD_ID

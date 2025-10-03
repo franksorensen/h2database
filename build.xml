@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE project>
+<project name="h2v1" basedir="." default="ivypublish" 
+						xmlns:ivy="antlib:org.apache.ivy.ant">
+
+	
+
+	<target name="ivypublish">
+		
+		<property file="../ivysetup/ivyproperties.properties" />
+		<ivy:settings file="../ivysetup/ivysettings.xml" />
+
+		<ivy:resolve file="${basedir}/ivy.xml" />
+		<ivy:publish pubrevision="1.4.200" status="release" resolver="shared" overwrite="true" >
+			<artifacts pattern="${basedir}/h2/bin/[artifact]-[revision].[ext]"/>
+		</ivy:publish>	
+	</target>
+	
+	
+</project>

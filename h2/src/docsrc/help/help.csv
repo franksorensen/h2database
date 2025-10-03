@@ -616,7 +616,7 @@ CREATE AGGREGATE [ IF NOT EXISTS ] newAggregateName FOR className
 ","
 Creates a new user-defined aggregate function. The method name must be the full
 qualified class name. The class must implement the interface
-""org.h2.api.Aggregate"" or ""org.h2.api.AggregateFunction"".
+""org.h2v1.api.Aggregate"" or ""org.h2v1.api.AggregateFunction"".
 
 Admin rights are required to execute this command.
 This command commits an open transaction in this connection.
@@ -750,7 +750,7 @@ be the resource name (for example ""java:comp/env/jdbc/Test"").
 Admin rights are required to execute this command.
 This command commits an open transaction in this connection.
 ","
-CREATE LINKED TABLE LINK('org.h2.Driver', 'jdbc:h2:./test2',
+CREATE LINKED TABLE LINK('org.h2v1.Driver', 'jdbc:h2:./test2',
     'sa', 'sa', 'TEST');
 CREATE LINKED TABLE LINK('', 'jdbc:h2:./test2', 'sa', 'sa',
     '(SELECT * FROM TEST WHERE ID>0)');
@@ -820,7 +820,7 @@ Indexes of temporary tables are kept fully in main memory,
 unless the temporary table is created using CREATE CACHED TABLE.
 
 The ENGINE option is only required when custom table implementations are used.
-The table engine class must implement the interface ""org.h2.api.TableEngine"".
+The table engine class must implement the interface ""org.h2v1.api.TableEngine"".
 Any table engine parameters are passed down in the tableEngineParams field of the CreateTableData object.
 
 Either ENGINE, or WITH (table engine params), or both may be specified. If ENGINE is not specified
@@ -848,14 +848,14 @@ CREATE TRIGGER [ IF NOT EXISTS ] newTriggerName
 { CALL triggeredClassName | AS sourceCodeString }
 ","
 Creates a new trigger.
-The trigger class must be public and implement ""org.h2.api.Trigger"".
+The trigger class must be public and implement ""org.h2v1.api.Trigger"".
 Inner classes are not supported.
 The class must be available in the classpath of the database engine
 (when using the server mode, it must be in the classpath of the server).
 
-The sourceCodeString must define a single method with no parameters that returns ""org.h2.api.Trigger"".
+The sourceCodeString must define a single method with no parameters that returns ""org.h2v1.api.Trigger"".
 See CREATE ALIAS for requirements regarding the compilation.
-Alternatively, javax.script.ScriptEngineManager can be used to create an instance of ""org.h2.api.Trigger"".
+Alternatively, javax.script.ScriptEngineManager can be used to create an instance of ""org.h2v1.api.Trigger"".
 Currently javascript (included in every JRE) and ruby (with JRuby) are supported.
 In that case the source must begin respectively with ""//javascript"" or ""#ruby"".
 
@@ -895,7 +895,7 @@ The schema name does not need to be specified when creating the trigger.
 This command commits an open transaction in this connection.
 ","
 CREATE TRIGGER TRIG_INS BEFORE INSERT ON TEST FOR EACH ROW CALL ""MyTrigger"";
-CREATE TRIGGER TRIG_SRC BEFORE INSERT ON TEST AS $$org.h2.api.Trigger create() { return new MyTrigger(""constructorParam""); } $$;
+CREATE TRIGGER TRIG_SRC BEFORE INSERT ON TEST AS $$org.h2v1.api.Trigger create() { return new MyTrigger(""constructorParam""); } $$;
 CREATE TRIGGER TRIG_JS BEFORE INSERT ON TEST AS $$//javascript\nreturn new Packages.MyTrigger(""constructorParam""); $$;
 CREATE TRIGGER TRIG_RUBY BEFORE INSERT ON TEST AS $$#ruby\nJava::MyPackage::MyTrigger.new(""constructorParam"") $$;
 "
@@ -1527,7 +1527,7 @@ SET JAVA_OBJECT_SERIALIZER
 { null | className }
 ","
 Sets the object used to serialize and deserialize java objects being stored in column of type OTHER.
-The serializer class must be public and implement ""org.h2.api.JavaObjectSerializer"".
+The serializer class must be public and implement ""org.h2v1.api.JavaObjectSerializer"".
 Inner classes are not supported.
 The class must be available in the classpath of the database engine
 (when using the server mode, it must be both in the classpath of the server and the client).
@@ -3440,7 +3440,7 @@ The timestamp with time zone data type. The proleptic Gregorian calendar is used
 If fractional seconds precision is specified it should be from 0 to 9, 6 is default.
 
 See also [timestamp with time zone](https://h2database.com/html/grammar.html#timestamp_with_time_zone) literal grammar.
-Mapped to ""org.h2.api.TimestampWithTimeZone"" by default and can be optionally mapped to ""java.time.OffsetDateTime"".
+Mapped to ""org.h2v1.api.TimestampWithTimeZone"" by default and can be optionally mapped to ""java.time.OffsetDateTime"".
 ""java.time.ZonedDateTime"" and ""java.time.Instant"" are also supported on Java 8 and later versions.
 
 Values of this data type are compared by UTC values. It means that ""2010-01-01 10:00:00+01"" is greater than ""2010-01-01 11:00:00+03"".
@@ -3697,7 +3697,7 @@ Day-time intervals can store days, hours, minutes, and seconds.
 Year-month intervals are comparable only with another year-month intervals.
 Day-time intervals are comparable only with another day-time intervals.
 
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ","
 INTERVAL DAY TO SECOND
 "
@@ -3709,7 +3709,7 @@ Interval data type.
 If precision is specified it should be from 1 to 18, 2 is default.
 
 See also [year interval](https://h2database.com/html/grammar.html#interval_year) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Period"" is also supported on Java 8 and later versions.
 ","
 INTERVAL YEAR
@@ -3722,7 +3722,7 @@ Interval data type.
 If precision is specified it should be from 1 to 18, 2 is default.
 
 See also [month interval](https://h2database.com/html/grammar.html#interval_month) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Period"" is also supported on Java 8 and later versions.
 ","
 INTERVAL MONTH
@@ -3735,7 +3735,7 @@ Interval data type.
 If precision is specified it should be from 1 to 18, 2 is default.
 
 See also [day interval](https://h2database.com/html/grammar.html#interval_day) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Duration"" is also supported on Java 8 and later versions.
 ","
 INTERVAL DAY
@@ -3748,7 +3748,7 @@ Interval data type.
 If precision is specified it should be from 1 to 18, 2 is default.
 
 See also [hour interval](https://h2database.com/html/grammar.html#interval_hour) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Duration"" is also supported on Java 8 and later versions.
 ","
 INTERVAL HOUR
@@ -3761,7 +3761,7 @@ Interval data type.
 If precision is specified it should be from 1 to 18, 2 is default.
 
 See also [minute interval](https://h2database.com/html/grammar.html#interval_minute) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Duration"" is also supported on Java 8 and later versions.
 ","
 INTERVAL MINUTE
@@ -3775,7 +3775,7 @@ If precision is specified it should be from 1 to 18, 2 is default.
 If fractional seconds precision is specified it should be from 0 to 9, 6 is default.
 
 See also [second interval](https://h2database.com/html/grammar.html#interval_second) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Duration"" is also supported on Java 8 and later versions.
 ","
 INTERVAL SECOND
@@ -3788,7 +3788,7 @@ Interval data type.
 If leading field precision is specified it should be from 1 to 18, 2 is default.
 
 See also [year to month interval](https://h2database.com/html/grammar.html#interval_year_to_month) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Period"" is also supported on Java 8 and later versions.
 ","
 INTERVAL YEAR TO MONTH
@@ -3801,7 +3801,7 @@ Interval data type.
 If leading field precision is specified it should be from 1 to 18, 2 is default.
 
 See also [day to hour interval](https://h2database.com/html/grammar.html#interval_day_to_hour) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Duration"" is also supported on Java 8 and later versions.
 ","
 INTERVAL DAY TO HOUR
@@ -3814,7 +3814,7 @@ Interval data type.
 If leading field precision is specified it should be from 1 to 18, 2 is default.
 
 See also [day to minute interval](https://h2database.com/html/grammar.html#interval_day_to_minute) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Duration"" is also supported on Java 8 and later versions.
 ","
 INTERVAL DAY TO MINUTE
@@ -3828,7 +3828,7 @@ If leading field precision is specified it should be from 1 to 18, 2 is default.
 If fractional seconds precision is specified it should be from 0 to 9, 6 is default.
 
 See also [day to second interval](https://h2database.com/html/grammar.html#interval_day_to_second) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Duration"" is also supported on Java 8 and later versions.
 ","
 INTERVAL DAY TO SECOND
@@ -3841,7 +3841,7 @@ Interval data type.
 If leading field precision is specified it should be from 1 to 18, 2 is default.
 
 See also [hour to minute interval](https://h2database.com/html/grammar.html#interval_hour_to_minute) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Duration"" is also supported on Java 8 and later versions.
 ","
 INTERVAL HOUR TO MINUTE
@@ -3855,7 +3855,7 @@ If leading field precision is specified it should be from 1 to 18, 2 is default.
 If fractional seconds precision is specified it should be from 0 to 9, 6 is default.
 
 See also [hour to second interval](https://h2database.com/html/grammar.html#interval_hour_to_second) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Duration"" is also supported on Java 8 and later versions.
 ","
 INTERVAL HOUR TO SECOND
@@ -3869,7 +3869,7 @@ If leading field precision is specified it should be from 1 to 18, 2 is default.
 If fractional seconds precision is specified it should be from 0 to 9, 6 is default.
 
 See also [minute to second interval](https://h2database.com/html/grammar.html#interval_minute_to_second) literal grammar.
-Mapped to ""org.h2.api.Interval"".
+Mapped to ""org.h2v1.api.Interval"".
 ""java.time.Duration"" is also supported on Java 8 and later versions.
 ","
 INTERVAL MINUTE TO SECOND

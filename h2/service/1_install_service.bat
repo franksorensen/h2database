@@ -2,8 +2,8 @@
 setlocal
 pushd "%~dp0"
 
-copy /y /b ..\bin\h2-*.jar ..\bin\h2.jar
-fc /b ..\bin\h2-*.jar ..\bin\h2.jar
+copy /y /b ..\bin\h2-*.jar ..\bin\h2v1.jar
+fc /b ..\bin\h2-*.jar ..\bin\h2v1.jar
 if not errorlevel 1 goto :start
 echo Please ensure there is only one h2-*.jar file.
 echo Process stopped

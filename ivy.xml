@@ -1,0 +1,11 @@
+<ivy-module version="2.0">
+    <info organisation="org.h2v1" module="h2v1" status="release" />
+    <publications>
+		<artifact name="h2v1" type="jar" ext="jar"/>
+    </publications>    
+
+    
+    <dependencies>
+    </dependencies>
+    
+</ivy-module>		

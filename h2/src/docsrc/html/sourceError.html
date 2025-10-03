@@ -67,7 +67,7 @@ function goDetails(code) {
     code = code.replace('HY', '50');
     code = code.replace('C', '1');
     code = code.replace('T', '2');
-    get('more').src = 'https://h2database.com/javadoc/org/h2/constant/ErrorCode.html#c' + code;
+    get('more').src = 'https://h2database.com/javadoc/org/h2v1/constant/ErrorCode.html#c' + code;
 }
 
 function go(file, line) {
@@ -126,7 +126,7 @@ function convert() {
         s = s.replace(/\t/g, " ");
         s = s.replace(/ +/g, " ");
         while (true) {
-            var start = s.indexOf("at org.h2.", idx);
+            var start = s.indexOf("at org.h2v1.", idx);
             if (start < 0) {
                 result += s.substring(idx);
                 break;
