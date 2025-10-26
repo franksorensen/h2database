@@ -5,16 +5,13 @@ Implementation-Version: ${version}
 Build-Jdk: ${buildJdk}
 Created-By: ${createdBy}
 Main-Class: org.h2v1.tools.Console
-Automatic-Module-Name: com.h2database
 Bundle-Activator: org.h2v1.util.DbDriverActivator
 Bundle-ManifestVersion: 2
 Bundle-Name: H2 Database Engine
-Bundle-SymbolicName: com.h2database
 Bundle-Vendor: H2 Group
 Bundle-Version: ${version}
 Bundle-License: https://h2database.com/html/license.html
 Bundle-Category: jdbc
-Multi-Release: true
 Import-Package: javax.crypto,
  javax.crypto.spec,
  javax.management,
